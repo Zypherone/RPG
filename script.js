@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Lets get the variables and constant setup
 const range = {
-  lowercase: [97, 111],
+  lowercase: [97, 122],
   uppercase: [65, 90],
   numerical: [48, 57],
   special: [33, 47]
@@ -40,29 +40,43 @@ function generatePassword() {
   */
 
  //fromCharCode();
-  var rangeArray = [];
+  // Lets initalised the charset var so we can push the characters based on the checked field.
+  var charSet = [];
  
   for(var x in range) {
     //console.log(range[x]);
 
-    //console.log(inputField[inputField.indexOf(x)].name);
+    // Lets pull which character set to use
     var inputField = document.querySelector("input[name='" + x + "'");
 
-    //console.log(inputField.name);
-    //console.log(inputField.checked);
+    // Lets check if the ranges has been checked. By default, lowercase is set.
     if (inputField.checked) {
 
       var startOfRange = range[x][0],
           endOfRange = range[x][1],
           lengthOfRange = endOfRange - startOfRange;
 
-      for(i=0;i<=lengthOfRange;i++){
+      for(var i=0;i<=lengthOfRange;i++){
         var charCode = startOfRange + i;
-        rangeArray.push(String.fromCharCode(charCode));
+        charSet.push(String.fromCharCode(charCode));
         //console.log(String.fromCharCode(charCode));
       }
+
+      /*
+
+      for (var i=0; i< charset.length; i < length; ++i) {
+        //retVal += charset.charAt(Math.floor(Math.random() * n));
+      }
+      */
     }
-    
+  }
+
+  if (charSet.length > 0) {
+    // Run generator
+    console.log(charSet);
+  } 
+  else {
+    // Return some error
   }
   
   return 'test';
