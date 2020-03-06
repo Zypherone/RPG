@@ -40,17 +40,27 @@ function generatePassword() {
   */
 
  //fromCharCode();
-
+  var rangeArray = [];
+ 
   for(var x in range) {
     //console.log(range[x]);
-    
-    var startOfRange = range[x][0],
-        endOfRange = range[x][1],
-        lengthOfRange = endOfRange - startOfRange;
 
-    for(i=0;i<=lengthOfRange;i++){
-      var charCode = startOfRange + i;
-      console.log(String.fromCharCode(charCode));
+    //console.log(inputField[inputField.indexOf(x)].name);
+    var inputField = document.querySelector("input[name='" + x + "'");
+
+    //console.log(inputField.name);
+    //console.log(inputField.checked);
+    if (inputField.checked) {
+
+      var startOfRange = range[x][0],
+          endOfRange = range[x][1],
+          lengthOfRange = endOfRange - startOfRange;
+
+      for(i=0;i<=lengthOfRange;i++){
+        var charCode = startOfRange + i;
+        rangeArray.push(String.fromCharCode(charCode));
+        //console.log(String.fromCharCode(charCode));
+      }
     }
     
   }
