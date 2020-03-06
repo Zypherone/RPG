@@ -1,3 +1,24 @@
+var shuffle = function (array) {
+
+	var currentIndex = array.length;
+	var temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+
+};
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -8,40 +29,26 @@ const range = {
   numerical: [48, 57],
   special: [33, 47]
 };
-
+/*
 function runRange(key, value) {
   console.log(key);
+}
+*/
+
+// Lets make the range input field dynamic to assist the value.
+var passwordRange = document.querySelector("input[type='range']"),
+    valueRange = document.getElementById("range");
+
+passwordRange.oninput = function() {
+  valueRange.innerHTML = this.value;
 }
 
 
 function generatePassword() {
-  /*
-  var fruits, text;
-  fruits = ["Banana", "Orange", "Apple", "Mango"];
 
-  text = "<ul>";
-  fruits.forEach(myFunction);
-  text += "</ul>";
-
-  function myFunction(value) {
-    console.log("<li>" + value + "</li>");
-  }
-
-*/
- // range.forEach(runRange);
-
-  /*
-  for(i=0;i<range.length;i++) {
-    range[i]
-    for(x=0;x<range[i].length;x++) {
-      console.log(range[x]);
-    }
-  }
-  */
-
- //fromCharCode();
-  // Lets initalised the charset var so we can push the characters based on the checked field.
   var charSet = [];
+  var buildPassword = [];
+  var rangeCount = 0;
  
   for(var x in range) {
     //console.log(range[x]);
@@ -56,30 +63,35 @@ function generatePassword() {
           endOfRange = range[x][1],
           lengthOfRange = endOfRange - startOfRange;
 
+      var mustIncludeRange = [];
+
       for(var i=0;i<=lengthOfRange;i++){
         var charCode = startOfRange + i;
         charSet.push(String.fromCharCode(charCode));
+        mustIncludeRange.push(String.fromCharCode(charCode));
         //console.log(String.fromCharCode(charCode));
       }
 
-      /*
-
-      for (var i=0; i< charset.length; i < length; ++i) {
-        //retVal += charset.charAt(Math.floor(Math.random() * n));
-      }
-      */
+      // Lets make sure we include one character from each inclusion range.
+      buildPassword.push(mustIncludeRange[Math.floor(Math.random() * mustIncludeRange.length)]);
+      rangeCount++;
     }
   }
 
   if (charSet.length > 0) {
     // Run generator
-    console.log(charSet);
+ 
+    var passwordLength = passwordRange.value - rangeCount;
+    for (var i=0; i < passwordLength; ++i) {
+      buildPassword.push(charSet[Math.floor(Math.random() * charSet.length)]);
+    }
+
   } 
   else {
     // Return some error
   }
   
-  return 'test';
+  return shuffle(buildPassword).join('');
 }
 
 
