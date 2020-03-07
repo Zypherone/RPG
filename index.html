@@ -4,29 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
+    <title>Random Password Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
       <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
+        <header class="card-header">
+          <h1>Random Password Generator (RPG)</h1>
+        </header>
         <div class="card-body">
           <label>
             <p>
-              Select the length of your password 
-              <input type="range" name="length" min="8" max="128" value="8">
-              <span id="range">8</span>
+              Please select the characters you would like to use in your randomly generated password. One character set must be selected.
+              
             </p>
           </label>
+          
             <label>
               <p>
-                Lowercase Characters 
+                Include Lowercase Characters 
                 <input type="checkbox" name="lowercase" value="true" checked />
               </p>
           </label>
@@ -46,6 +43,14 @@
             <p>
               Include Numerical Characters 
               <input type="checkbox" name="numerical" value="true" />
+            </p>
+          </label>
+          <label>
+            <p>
+              Drag the slider below to select the length of your password, or enter the value in the box provided. Min 8, Max 128 
+              <input type="text" name="range" id="range" value="8" />
+              <input type="range" name="length" min="8" max="128" value="8">
+              
             </p>
           </label>
           <textarea

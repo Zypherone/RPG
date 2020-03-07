@@ -1,3 +1,6 @@
+
+// Utlised a shuffle function from 
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 var shuffle = function (array) {
 
 	var currentIndex = array.length;
@@ -22,36 +25,33 @@ var shuffle = function (array) {
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Lets get the variables and constant setup
+// Lets get the character set ranges, based on https://www.ascii-code.com/
+// Paramaters, start, finish, exclude
 const range = {
-  lowercase: [97, 122],
-  uppercase: [65, 90],
-  numerical: [48, 57],
-  special: [33, 47]
+  lowercase: [97, 122], // [a-z]
+  uppercase: [65, 90], // [A-Z]
+  numerical: [48, 57], // [0-9]
+  special: [33, 43]
 };
-/*
-function runRange(key, value) {
-  console.log(key);
-}
-*/
 
 // Lets make the range input field dynamic to assist the value.
 var passwordRange = document.querySelector("input[type='range']"),
     valueRange = document.getElementById("range");
 
 passwordRange.oninput = function() {
-  valueRange.innerHTML = this.value;
+  valueRange.value = this.value;
 }
 
 
 function generatePassword() {
 
+  // Lets initialized the basic variables
   var charSet = [];
   var buildPassword = [];
   var rangeCount = 0;
- 
+  
+  // Run through the all the different character set ranges.
   for(var x in range) {
-    //console.log(range[x]);
 
     // Lets pull which character set to use
     var inputField = document.querySelector("input[name='" + x + "'");
@@ -69,19 +69,21 @@ function generatePassword() {
         var charCode = startOfRange + i;
         charSet.push(String.fromCharCode(charCode));
         mustIncludeRange.push(String.fromCharCode(charCode));
-        //console.log(String.fromCharCode(charCode));
       }
 
-      // Lets make sure we include one character from each inclusion range.
+      // Lets make sure we include at least one character from each character set.
       buildPassword.push(mustIncludeRange[Math.floor(Math.random() * mustIncludeRange.length)]);
       rangeCount++;
     }
   }
 
+  // Make sure we have a character set to run the generator.
   if (charSet.length > 0) {
-    // Run generator
- 
+    
+    // Set the length of the password, minus the rangeCount 
+    // the min of one character requirement for each character set 
     var passwordLength = passwordRange.value - rangeCount;
+    // Run generator
     for (var i=0; i < passwordLength; ++i) {
       buildPassword.push(charSet[Math.floor(Math.random() * charSet.length)]);
     }
@@ -89,6 +91,7 @@ function generatePassword() {
   } 
   else {
     // Return some error
+    alert("ERROR! Unable to build your password. Please contact support.");
   }
   
   return shuffle(buildPassword).join('');
@@ -99,10 +102,17 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
+
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  if (password) {
+    passwordText.value = password;
+  } else {
+    alert("Please select at least one character set");
+    return;
+  }
 
 }
 

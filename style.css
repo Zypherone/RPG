@@ -54,6 +54,42 @@ header {
   min-height: 100px;
 }
 
+/*
+
+.card-body input["type=range"] {
+  display: block;
+}
+*/
+label {
+  display: block;
+  max-width: 70%;
+  border-top: 1px solid #d6d6d6;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+label:first-child {
+  border-top: 0;
+}
+
+label input[type="text"] {
+  width: 50px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  margin: 15px auto;
+}
+
+label input[type="range"] {
+  width: 100%;
+}
+
+
+label input[type="checkbox"] {
+  float: left;
+}
+
 .card-footer {
   text-align: center;
 }
