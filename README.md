@@ -10,5 +10,6 @@ This generator allows you to control the character sets you would like to includ
 - Prompts user, should no character set has been selected.
 - Includes a minimum of one character for each character set selected.  
 
-![Alt text](/RPG/blob/master/screenshot.jpg?raw=true "Optional Title")
-![Alt text](https://github.com/Zypherone/RPG/blob/master/screenshot.jpg?raw=true "Optional Title")
+#Screenshot
+
+![Screenshot](https://github.com/Zypherone/RPG/blob/master/screenshot.jpg?raw=true "Screenshot")
