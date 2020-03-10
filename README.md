@@ -10,6 +10,11 @@ This generator allows you to control the character sets you would like to includ
 - Prompts user, should no character set has been selected.
 - Includes a minimum of one character for each character set selected.  
 
+# Deployed website and REPO hub
+
+REPO: https://github.com/Zypherone/RPG
+SITE: https://zypherone.github.io/RPG/
+
 # Screenshot
 
 ![Screenshot](https://github.com/Zypherone/RPG/blob/master/screenshot.jpg?raw=true "Screenshot")
