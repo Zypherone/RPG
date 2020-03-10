@@ -31,7 +31,12 @@ const range = {
   lowercase: [97, 122], // [a-z]
   uppercase: [65, 90], // [A-Z]
   numerical: [48, 57], // [0-9]
-  special: [33, 43]
+  special: [
+    33, 47,  // Range one
+    58, 63,  // Range two
+    91, 96,  // Range three
+    123, 126 // Range four
+  ]
 };
 
 // Lets make the range input field dynamic to assist the value.
@@ -66,9 +71,25 @@ function generatePassword() {
       var mustIncludeRange = [];
 
       for(var i=0;i<=lengthOfRange;i++){
+
+        if (x == "special") {
+
+          // As there are four ranges, let makes sure we get all the special chacters included in the charSet ARRAY.
+
+          //var y = 0;
+          /*
+
+          startOfRange = range[x][0];
+          endOfRange = range[x][1];
+          lengthOfRange = endOfRange - startOfRange;
+          */
+
+        } 
+
         var charCode = startOfRange + i;
-        charSet.push(String.fromCharCode(charCode));
-        mustIncludeRange.push(String.fromCharCode(charCode));
+          charSet.push(String.fromCharCode(charCode));
+          mustIncludeRange.push(String.fromCharCode(charCode));
+
       }
 
       // Lets make sure we include at least one character from each character set.
