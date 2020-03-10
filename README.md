@@ -12,7 +12,7 @@ This generator allows you to control the character sets you would like to includ
 
 # Deployed website and REPO hub
 
-REPO: https://github.com/Zypherone/RPG
+REPO: https://github.com/Zypherone/RPG/ 
 SITE: https://zypherone.github.io/RPG/
 
 # Screenshot
